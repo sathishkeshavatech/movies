@@ -14,6 +14,14 @@ class MovieResource extends Resource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            "name" => $this->name,
+            "about" => $this->detail,
+            "review" => $this->rating,
+            "total_collection" => $this->collection,
+            "href" => [
+                "link" => route('reviews.index',$this->id)
+            ]
+        ];
     }
 }

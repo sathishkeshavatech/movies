@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Model\Review;
+use App\Model\Movie;
+use App\Http\Resources\Review\ReviewResource;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -12,9 +14,9 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Movie $movie)
     {
-        //
+        return ReviewResource::collection($movie->review);
     }
 
     /**
